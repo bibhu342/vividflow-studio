@@ -9,6 +9,7 @@
 <meta property="og:description" content="Discover how VividFlow Studio helps brands worldwide grow with compelling image ads, engaging video ads, and robust website development.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/logo-lockup.webp">
+<meta name="theme-color" content="#000000">
 <link rel="icon" href="assets/img/logo-mark.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,16 +17,221 @@
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav" id="nav"><div class="nav-in"><a class="brand" href="#top" aria-label="VividFlow Studio home"><img src="assets/img/logo-mark.webp" alt="VividFlow Studio logo" width="256" height="198"><span>Vivid<i>Flow</i></span></a><nav class="nav-l" aria-label="Primary"><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#contact">Contact</a></nav><a class="btn" href="#contact">Start a project</a></div></header>
+
+<!-- ══ BOOT ═══════════════════════════════════════════════
+     The bar tracks real image decode, not a timer. -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot__bar"><i id="bootFill"></i></div>
+</div>
+
+<!-- ══ HUD ════════════════════════════════════════════════ -->
+<header class="hud" id="hud">
+  <div class="hud__side hud__side--l">
+    <a class="pill pill--brand" href="#/" data-nav>
+      <img src="assets/img/logo-mark.webp" alt="" width="256" height="198">
+      <span>Vivid<i>Flow</i></span>
+    </a>
+    <a class="pill pill--ctx" href="#/" id="btnReturn" data-nav>/ Return</a>
+    <a class="pill pill--ctx" href="#/" id="btnNext" data-nav>Next &rarr;</a>
+  </div>
+  <nav class="hud__side hud__side--r" aria-label="Primary">
+    <a class="pill" href="#/" data-nav>Work</a>
+    <a class="pill" href="#/studio" data-nav>Studio</a>
+    <a class="pill pill--go" href="#/contact" data-nav>Contact</a>
+  </nav>
+</header>
+
 <main id="main">
-<section class="hero" id="top"><div class="hero-grid" aria-hidden="true"></div><div class="hero-glow" aria-hidden="true"></div><div class="wrap hero-in"><div><p class="lbl rv">VividFlow Studio</p><h1 class="rv">We design <em>flow</em> into every screen.</h1><p class="hero-lede rv">Design. Development. Digital growth — for brands that refuse to look ordinary.</p><div class="hero-cta rv"><a class="btn" href="#contact">Start a project</a><a class="btn btn-c" href="#work">View the work →</a></div></div><div class="hero-art rv"><img src="assets/img/logo-lockup.webp" alt="VividFlow Studio — design, development, digital growth" width="720" height="617" fetchpriority="high"></div></div></section>
-<section class="sec sec-alt" id="services"><div class="wrap"><div class="head"><p class="lbl rv">What We Do</p><h2 class="rv">Three disciplines. One flow.</h2></div><div class="grid3"><article class="card rv"><span class="card-n">01</span><h3>Web Design &amp; Development</h3><p>Landing pages and full sites built to convert — not just to look good.</p><ul><li>Landing pages</li><li>Business &amp; portfolio sites</li><li>Webflow build &amp; CMS</li><li>Responsive design</li></ul><span class="price">From $300</span></article><article class="card rv"><span class="card-n">02</span><h3>Video Content</h3><p>Motion that stops the scroll — ads, promos, and social-first edits.</p><ul><li>Product &amp; brand promos</li><li>Social reels</li><li>Scripting</li><li>Editing &amp; motion graphics</li></ul><span class="price">From $200</span></article><article class="card rv"><span class="card-n">03</span><h3>Graphic &amp; Brand Design</h3><p>Visual identity and ad creative that makes brands unmistakable.</p><ul><li>Brand identity</li><li>Social &amp; display ads</li><li>Packaging</li><li>Design systems</li></ul><span class="price">From $100</span></article></div></div></section>
-<section class="sec" id="work"><div class="wrap"><div class="head"><p class="lbl rv">Selected Work</p><h2 class="rv">A few favorites.</h2></div><div class="work"><article class="item rv"><div class="item-media"><div class="item-ph"><span>Landing page concept</span></div></div><div class="item-body"><div class="item-meta"><span class="tag">Concept / SaaS Landing Page</span><span class="yr">2026</span></div><h3>Groundtruth</h3><p>Landing page concept — label quality tooling for AI teams.</p><a class="lnk" href="https://getgroundtruth.webflow.io" target="_blank" rel="noopener">View live ↗</a></div></article><article class="item rv"><div class="item-media"><img src="assets/img/voltage-energy.webp" alt="Voltage energy drink can product render with gold liquid splash on a black background" width="1200" height="675" loading="lazy"></div><div class="item-body"><div class="item-meta"><span class="tag tag-g">Concept / Product Visual</span><span class="yr">2026</span></div><h3>Voltage Energy</h3><p>Energy drink can product render with gold liquid splash.</p></div></article><article class="item rv"><div class="item-media"><div class="item-ph"><span>Social creative set</span></div></div><div class="item-body"><div class="item-meta"><span class="tag">Concept / Social Creative</span><span class="yr">2026</span></div><h3>Campaign Set</h3><p>Matched social creative set built to a single locked reference.</p></div></article><article class="item rv"><div class="item-media"><div class="item-ph"><span>In production</span></div></div><div class="item-body"><div class="item-meta"><span class="tag tag-g">Video</span><span class="yr">2026</span></div><h3>In Production</h3><p>Café promo — in production.</p></div></article></div></div></section>
-<section class="sec sec-alt" id="process"><div class="wrap"><div class="head"><p class="lbl rv">Process</p><h2 class="rv">From brief to launch.</h2></div><ol class="steps"><li class="step rv"><span class="step-n">01</span><h3>Discover</h3><p>What the business does, who buys from it, and what has to be true by launch day.</p></li><li class="step rv"><span class="step-n">02</span><h3>Design</h3><p>Direction, layout and visual system — approved before anything gets built.</p></li><li class="step rv"><span class="step-n">03</span><h3>Build</h3><p>Production in parallel across web, video and graphics. Drafts as they land, not at the end.</p></li><li class="step rv"><span class="step-n">04</span><h3>Launch</h3><p>Checked, shipped and handed over — with the files you need to keep going.</p></li></ol></div></section>
-<section class="cta" id="contact"><div class="wrap"><p class="lbl rv">Get in touch</p><h2 class="rv">Let's build something worth flowing toward.</h2><p class="rv">Tell me about the project — what it is, when you need it, and the one thing that has to land.</p><a class="btn rv" href="mailto:bibhudendu342@gmail.com?subject=Project%20enquiry%20—%20VividFlow%20Studio">bibhudendu342@gmail.com</a></div></section>
+
+<!-- ══ VIEW: HOME ═════════════════════════════════════════ -->
+<section class="view view--stage" id="view-home" data-view="home" aria-label="Selected work">
+  <div class="stage" id="stage">
+
+    <div class="stage__glow" aria-hidden="true"></div>
+    <div class="stage__grid" aria-hidden="true"></div>
+
+    <!-- Rotating media cube. Faces are built by JS from each case's data-faces. -->
+    <div class="scene" id="scene" aria-hidden="true">
+      <div class="cube" id="cube"></div>
+    </div>
+
+    <!-- Selected work: oversized outlined index, layered over the cube.
+         Each name carries a plain caption saying what the project is. -->
+    <div class="stage__body">
+      <p class="lbl stage__lbl">Selected work &middot; pick a project to open it</p>
+      <ol class="index" id="index">
+        <li class="index__row"><a href="#/work/groundtruth" data-project="groundtruth" data-nav>Groundtruth<small>SaaS landing page</small></a></li>
+        <li class="index__row"><a href="#/work/voltage" data-project="voltage" data-nav>Voltage Energy<small>Product visual</small></a></li>
+        <li class="index__row"><a href="#/work/veraen" data-project="veraen" data-nav>Veraen<small>Social ad set</small></a></li>
+        <li class="index__row"><a href="#/work/cafe-promo" data-project="cafe-promo" data-nav>Caf&eacute; Promo<small>Video &middot; in production</small></a></li>
+      </ol>
+    </div>
+
+    <!-- Plain-language intro, so a first-time visitor knows what this site is. -->
+    <div class="intro">
+      <div>
+        <p class="lbl">VividFlow Studio</p>
+        <h1 class="intro__title">Websites, video &amp; brand design for businesses ready to stand out.</h1>
+      </div>
+      <div class="intro__cta">
+        <a class="pill pill--go" href="#/contact" data-nav>Start a project</a>
+        <a class="pill" href="#/studio" data-nav>Services &amp; pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIEW: WORK CASES ═══════════════════════════════════ -->
+<section class="view view--case" id="view-groundtruth" data-view="work" data-slug="groundtruth"
+         data-accent="gold"
+         data-faces="assets/img/groundtruth-1.webp,assets/img/groundtruth-2.webp,assets/img/groundtruth-3.webp,assets/img/groundtruth-4.webp"
+         aria-labelledby="t-groundtruth">
+  <div class="case">
+    <div class="case__media">
+      <figure><img src="assets/img/groundtruth-1.webp" alt="Groundtruth hero — “Know which labels you can actually trust.” above a batch dashboard with agreement scores" width="1200" height="958" loading="lazy"></figure>
+      <figure><img src="assets/img/groundtruth-2.webp" alt="Groundtruth problem section with three key figures and an impact-sorted review queue" width="1200" height="917" loading="lazy"></figure>
+      <figure><img src="assets/img/groundtruth-3.webp" alt="Groundtruth pipeline section — annotate, score, route, ship — with an agreement-by-class drift chart" width="1200" height="1025" loading="lazy"></figure>
+      <figure><img src="assets/img/groundtruth-4.webp" alt="Groundtruth pricing — Starter, Team and Enterprise tiers" width="1200" height="750" loading="lazy"></figure>
+    </div>
+    <div class="case__info">
+      <h2 class="case__title" id="t-groundtruth">Groundtruth</h2>
+      <p class="case__kind">[2026] Concept / SaaS landing page</p>
+
+      <div class="fld"><p class="lbl">Discipline</p><p>Web design &amp; development</p></div>
+      <div class="fld"><p class="lbl">Status</p><p>Concept product &mdash; a design exercise, nothing is for sale</p></div>
+      <div class="fld"><p class="lbl">About</p><p>A landing page for Groundtruth, a concept label-quality platform for AI teams. It scores annotator agreement, ranks the labels worth a human review, and tracks quality drift before it reaches training.</p></div>
+      <div class="fld"><p class="lbl">Page</p><p>Problem, product, pipeline fit, pricing</p></div>
+      <div class="fld"><p class="lbl">Built in</p><p>Webflow</p></div>
+      <div class="fld"><p class="lbl">Visit</p>
+        <p><a class="lnk" href="https://getgroundtruth.webflow.io" target="_blank" rel="noopener">[ View project &nearr; ]</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="view view--case" id="view-voltage" data-view="work" data-slug="voltage"
+         data-accent="gold" data-faces="assets/img/voltage-energy.webp" aria-labelledby="t-voltage">
+  <div class="case">
+    <div class="case__media">
+      <figure><img src="assets/img/voltage-energy.webp" alt="Voltage energy drink can product render with gold liquid splash on a black background" width="1200" height="675" loading="lazy"></figure>
+    </div>
+    <div class="case__info">
+      <h2 class="case__title" id="t-voltage">Voltage Energy</h2>
+      <p class="case__kind">[2026] Concept / Product visual</p>
+
+      <div class="fld"><p class="lbl">Discipline</p><p>Graphic &amp; brand design</p></div>
+      <div class="fld"><p class="lbl">Status</p><p>Concept</p></div>
+      <div class="fld"><p class="lbl">About</p><p>Energy drink can product render with gold liquid splash.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="view view--case" id="view-veraen" data-view="work" data-slug="veraen" data-accent="cyan"
+         data-faces="assets/img/campaign-1.webp,assets/img/campaign-2.webp,assets/img/campaign-3.webp,assets/img/campaign-4.webp,assets/img/campaign-5.webp"
+         aria-labelledby="t-veraen">
+  <div class="case">
+    <div class="case__media">
+      <figure><img src="assets/img/campaign-2.webp" alt="Veraen Barrier 01 serum ad — “Keep the good in”" width="620" height="774" loading="lazy"></figure>
+      <figure><img src="assets/img/campaign-3.webp" alt="Veraen Barrier 01 ad — three ingredients, one stronger barrier" width="620" height="774" loading="lazy"></figure>
+      <figure><img src="assets/img/campaign-1.webp" alt="Veraen Barrier 01 social frame" width="620" height="930" loading="lazy"></figure>
+      <figure><img src="assets/img/campaign-4.webp" alt="Veraen Barrier 01 social frame" width="620" height="774" loading="lazy"></figure>
+      <figure><img src="assets/img/campaign-5.webp" alt="Veraen Barrier 01 ad — “Skin, at ease”" width="620" height="774" loading="lazy"></figure>
+    </div>
+    <div class="case__info">
+      <h2 class="case__title" id="t-veraen">Veraen</h2>
+      <p class="case__kind">[2026] Concept / Social creative</p>
+
+      <div class="fld"><p class="lbl">Discipline</p><p>Graphic &amp; brand design</p></div>
+      <div class="fld"><p class="lbl">Status</p><p>Concept</p></div>
+      <div class="fld"><p class="lbl">About</p><p>&ldquo;Barrier 01&rdquo; &mdash; five matched social frames built to a single locked reference, so product, light and type hold across the whole set.</p></div>
+      <div class="fld"><p class="lbl">Deliverables</p><p>Five social frames</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="view view--case" id="view-cafe-promo" data-view="work" data-slug="cafe-promo"
+         data-accent="cyan" data-faces="" aria-labelledby="t-cafe">
+  <div class="case">
+    <div class="case__media">
+      <div class="ph ph--tall"><span>In production</span></div>
+    </div>
+    <div class="case__info">
+      <h2 class="case__title" id="t-cafe">Caf&eacute; Promo</h2>
+      <p class="case__kind">[2026] Video content</p>
+
+      <div class="fld"><p class="lbl">Discipline</p><p>Video content</p></div>
+      <div class="fld"><p class="lbl">Status</p><p>In production</p></div>
+      <div class="fld"><p class="lbl">About</p><p>Caf&eacute; promo &mdash; in production. Frames go up when it ships.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIEW: STUDIO ═══════════════════════════════════════ -->
+<section class="view view--scroll" id="view-studio" data-view="studio" aria-labelledby="t-studio">
+  <div class="wrap doc">
+
+    <header class="doc__head">
+      <p class="lbl">What we do</p>
+      <h2 id="t-studio">Three disciplines.<br>One flow.</h2>
+    </header>
+
+    <div class="grid3">
+      <article class="card">
+        <span class="card-n">01</span>
+        <h3>Web Design &amp; Development</h3>
+        <p>Landing pages and full sites built to convert &mdash; not just to look good.</p>
+        <ul><li>Landing pages</li><li>Business &amp; portfolio sites</li><li>Webflow build &amp; CMS</li><li>Responsive design</li></ul>
+        <span class="price">From $300</span>
+      </article>
+      <article class="card">
+        <span class="card-n">02</span>
+        <h3>Video Content</h3>
+        <p>Motion that stops the scroll &mdash; ads, promos, and social-first edits.</p>
+        <ul><li>Product &amp; brand promos</li><li>Social reels</li><li>Scripting</li><li>Editing &amp; motion graphics</li></ul>
+        <span class="price">From $200</span>
+      </article>
+      <article class="card">
+        <span class="card-n">03</span>
+        <h3>Graphic &amp; Brand Design</h3>
+        <p>Visual identity and ad creative that makes brands unmistakable.</p>
+        <ul><li>Brand identity</li><li>Social &amp; display ads</li><li>Packaging</li><li>Design systems</li></ul>
+        <span class="price">From $100</span>
+      </article>
+    </div>
+
+    <header class="doc__head doc__head--mid">
+      <p class="lbl">Process</p>
+      <h2>From brief to launch.</h2>
+    </header>
+
+    <ol class="steps">
+      <li class="step"><span class="step-n">01</span><h3>Discover</h3>
+        <p>What the business does, who buys from it, and what has to be true by launch day.</p></li>
+      <li class="step"><span class="step-n">02</span><h3>Design</h3>
+        <p>Direction, layout and visual system &mdash; approved before anything gets built.</p></li>
+      <li class="step"><span class="step-n">03</span><h3>Build</h3>
+        <p>Production in parallel across web, video and graphics. Drafts as they land, not at the end.</p></li>
+      <li class="step"><span class="step-n">04</span><h3>Launch</h3>
+        <p>Checked, shipped and handed over &mdash; with the files you need to keep going.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ VIEW: CONTACT ══════════════════════════════════════ -->
+<section class="view view--scroll" id="view-contact" data-view="contact" aria-labelledby="t-contact">
+  <div class="wrap doc doc--center">
+    <p class="lbl">Get in touch</p>
+    <h2 id="t-contact">Let&rsquo;s build something<br>worth flowing toward.</h2>
+    <p class="doc__lede">Tell me about the project &mdash; what it is, when you need it, and the one thing that has to land.</p>
+    <a class="pill pill--go pill--lg" href="mailto:bibhu342@gmail.com?subject=Project%20enquiry%20%E2%80%94%20VividFlow%20Studio">bibhu342@gmail.com</a>
+    <p class="doc__fine">&copy; <span id="yr">2026</span> VividFlow Studio &mdash; Bibhudendu Behera, Founder</p>
+  </div>
+</section>
+
 </main>
-<footer class="ft"><div class="wrap"><div class="ft-in"><div class="ft-brand"><img src="assets/img/logo-mark.webp" alt="" width="256" height="198"><span class="ft-tag">Design. Development. Digital growth.</span></div><nav class="ft-l" aria-label="Footer"><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="mailto:bibhudendu342@gmail.com">Email</a></nav></div><div class="ft-c">© <span id="yr">2026</span> VividFlow Studio — Bibhudendu Behera, Founder</div></div></footer>
+
 <script src="assets/js/main.js"></script>
 </body>
 </html>
