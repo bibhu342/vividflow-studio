@@ -173,11 +173,12 @@ html:not(.js) .view--stage{ display:none; }
   touch-action:none;
 }
 .cube{
-  --cs:clamp(190px,29vmin,360px);
+  --cs:clamp(210px,32vmin,400px);
   --rx:-16deg; --ry:28deg;
   position:relative; width:var(--cs); height:var(--cs);
   transform-style:preserve-3d;
-  transform:rotateX(var(--rx)) rotateY(var(--ry));
+  /* Nudged off-centre to the right, away from the outlined index text. */
+  transform:translateX(8vmin) rotateX(var(--rx)) rotateY(var(--ry));
 }
 .cube__face{
   position:absolute; inset:0; overflow:hidden;
