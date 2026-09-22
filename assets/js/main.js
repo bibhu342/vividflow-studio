@@ -38,28 +38,48 @@
   function buildCube(p) {
     if (!cube || !p || builtFor === p.slug) return;
     builtFor = p.slug;
+
+    /* Split the project's frames: the film (if it has one) and the stills.
+       The film goes on the front face only — one decoding video keeps the
+       spin smooth — and the stills fill the other five, so no face is ever
+       left empty. */
+    var film = null, stills = [];
+    for (var f = 0; f < p.faces.length; f++) {
+      var item = p.faces[f].trim();
+      if (!item) continue;
+      if (/\.(mp4|webm)$/i.test(item)) { if (!film) film = item; }
+      else { stills.push(item); }
+    }
+
     var html = '';
     for (var i = 0; i < 6; i++) {
       var cls = 'cube__face cube__face--' + FACES[i];
-      if (p.faces.length) {
-        // Cycle the available frames so all six faces are filled.
-        var src = p.faces[i % p.faces.length].trim();
-        if (/\.(mp4|webm)$/i.test(src)) {
-          // A project with a film shows the film itself — muted and looping,
-          // so it plays inline on phones without asking for sound.
-          var webm = src.replace(/\.mp4$/i, '.webm');
-          html += '<div class="' + cls + '"><video autoplay muted loop playsinline preload="metadata">' +
-                  '<source src="' + webm + '" type="video/webm">' +
-                  '<source src="' + src + '" type="video/mp4"></video></div>';
-        } else {
-          html += '<div class="' + cls + '"><img src="' + src + '" alt="" loading="lazy" decoding="async"></div>';
-        }
+      if (film && i === 0) {
+        // Muted, looping and inline, so it plays on a phone without a tap.
+        // The poster is a still from the same project, so the face still
+        // shows the work if the browser refuses to autoplay.
+        var webm = film.replace(/\.mp4$/i, '.webm');
+        var poster = stills.length ? ' poster="' + stills[0] + '"' : '';
+        html += '<div class="' + cls + '"><video autoplay muted loop playsinline preload="auto"' + poster + '>' +
+                '<source src="' + webm + '" type="video/webm">' +
+                '<source src="' + film + '" type="video/mp4"></video></div>';
+      } else if (stills.length) {
+        var src = stills[(film ? i - 1 : i) % stills.length];
+        html += '<div class="' + cls + '"><img src="' + src + '" alt="" decoding="async"></div>';
+      } else if (film) {
+        html += '<div class="' + cls + ' cube__face--type"><span>' + p.name + '</span></div>';
       } else {
         // No imagery yet — say so rather than mock something up.
         html += '<div class="' + cls + ' cube__face--type"><span>' + p.name + '</span></div>';
       }
     }
     cube.innerHTML = html;
+
+    /* Some browsers ignore the autoplay attribute on a freshly inserted
+       element, which left the face black. Ask once, and let the poster
+       stand in if the answer is no. */
+    var vid = cube.querySelector('video');
+    if (vid && vid.play) { var pr = vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
   }
 
   /* Rotation state. JS writes --rx/--ry so the idle spin and the drag
