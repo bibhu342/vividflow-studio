@@ -179,7 +179,7 @@ html:not(.js) .view--stage{ display:none; }
   transform-style:preserve-3d;
   /* Pushed well right of the outlined index text, and sized to fill that side
      of the stage. The offset is capped so the cube never leaves the viewport. */
-  transform:translateX(clamp(40px,19vw,360px)) rotateX(var(--rx)) rotateY(var(--ry));
+  transform:translateX(clamp(60px,26vw,460px)) rotateX(var(--rx)) rotateY(var(--ry));
 }
 .cube__face{
   position:absolute; inset:0; overflow:hidden;
@@ -218,14 +218,28 @@ html:not(.js) .view--stage{ display:none; }
   display:flex; flex-direction:column; justify-content:center;
   padding:calc(var(--hud) + 8px) clamp(12px,3vw,40px) 0;
   pointer-events:none;
+  /* The names keep to the left half; the cube owns the right. */
+  max-width:min(60vw,1080px);
 }
 .stage__lbl{ margin-bottom:clamp(12px,2vh,22px); }
-.index{ display:grid; gap:clamp(2px,1.1vh,18px); pointer-events:none; }
+/* More projects than fit the stage, so the list scrolls in place and the
+   rows beyond the edges fade out rather than colliding with the intro. */
+.index{
+  display:grid; gap:clamp(2px,1.1vh,18px); pointer-events:auto;
+  max-height:min(64svh,600px);
+  overflow-y:auto; overscroll-behavior:contain; touch-action:pan-y;
+  scrollbar-width:none; -ms-overflow-style:none;
+  padding-block:6px;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 89%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 89%,transparent 100%);
+  scroll-behavior:smooth;
+}
+.index::-webkit-scrollbar{ width:0; height:0; display:none; }
 .index__row{ line-height:.92; }
 .index__row a{
   pointer-events:auto;
   display:inline-block; max-width:100%;
-  font-size:clamp(30px,min(8.8vw,11vh),128px);
+  font-size:clamp(26px,min(5.2vw,6.6vh),80px);
   font-weight:200; letter-spacing:.005em; text-transform:uppercase;
   color:transparent;
   -webkit-text-stroke:clamp(1px,.11vw,2px) rgba(255,255,255,.5);
@@ -251,8 +265,8 @@ html:not(.js) .view--stage{ display:none; }
     --cs:clamp(190px,46vmin,300px);
     transform:translateX(6vmin) rotateX(var(--rx)) rotateY(var(--ry));
   }
-  .stage__body{ padding-inline:14px; }
-  .index{ gap:clamp(4px,1.2vh,14px); }
+  .stage__body{ padding-inline:14px; max-width:none; }
+  .index{ gap:clamp(4px,1.2vh,14px); max-height:min(52svh,430px); }
   .index__row a{ font-size:clamp(26px,8.3vw,60px); }
   .index__row small{ display:block; margin:4px 0 0; }
 }

@@ -138,13 +138,33 @@
     active = i;
     var p = projects[i];
 
-    indexLinks.forEach(function (a, n) { a.classList.toggle('is-active', n === i); });
+    indexLinks.forEach(function (a) {
+      a.classList.toggle('is-active', a.getAttribute('data-project') === p.slug);
+    });
+    /* Keep the active name in view while the carousel advances. */
+    var activeLink = null;
+    for (var k = 0; k < indexLinks.length; k++) {
+      if (indexLinks[k].getAttribute('data-project') === p.slug) { activeLink = indexLinks[k]; break; }
+    }
+    if (activeLink && !fromUser && activeLink.scrollIntoView) {
+      try { activeLink.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); } catch (e) {}
+    }
     if (stage) stage.setAttribute('data-acc', p.accent);
     buildCube(p);
     if (fromUser) pauseCycle();
   }
 
-  indexLinks.forEach(function (a, i) {
+  /* Match each name to its own project by slug. The index and the case
+     sections are not in the same order, so pairing them by position showed
+     the wrong project on the cube. */
+  function indexOfSlug(slug) {
+    for (var n = 0; n < projects.length; n++) { if (projects[n].slug === slug) return n; }
+    return -1;
+  }
+
+  indexLinks.forEach(function (a) {
+    var i = indexOfSlug(a.getAttribute('data-project'));
+    if (i < 0) return;
     a.addEventListener('pointerenter', function () { setActive(i, true); });
     a.addEventListener('focus', function () { setActive(i, true); });
     // Let the carousel pick back up once the pointer is off the word.
