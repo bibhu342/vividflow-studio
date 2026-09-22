@@ -396,3 +396,12 @@ html:not(.js) .view--stage{ display:none; }
   .index__row a:hover,.index__row a:focus-visible,.index__row a.is-active{ transform:none; }
   .card:hover{ transform:none; }
 }
+
+/* A case that has a film leads with it: the player sits in the media column
+   at the film's own shape, never stretched to match the stills beside it. */
+.case__film{ margin:0; border:1px solid var(--line); background:#000; }
+.case__film video{ display:block; width:100%; height:auto; max-height:78svh; object-fit:contain; background:#000; }
+.case__film figcaption{
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim);
+  padding:10px 12px; border-top:1px solid var(--line); background:var(--chr);
+}
