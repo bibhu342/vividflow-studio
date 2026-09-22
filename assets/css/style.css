@@ -173,12 +173,13 @@ html:not(.js) .view--stage{ display:none; }
   touch-action:none;
 }
 .cube{
-  --cs:clamp(210px,32vmin,400px);
+  --cs:clamp(210px,46vmin,560px);
   --rx:-16deg; --ry:28deg;
   position:relative; width:var(--cs); height:var(--cs);
   transform-style:preserve-3d;
-  /* Nudged off-centre to the right, away from the outlined index text. */
-  transform:translateX(8vmin) rotateX(var(--rx)) rotateY(var(--ry));
+  /* Pushed well right of the outlined index text, and sized to fill that side
+     of the stage. The offset is capped so the cube never leaves the viewport. */
+  transform:translateX(clamp(40px,19vw,360px)) rotateX(var(--rx)) rotateY(var(--ry));
 }
 .cube__face{
   position:absolute; inset:0; overflow:hidden;
@@ -244,6 +245,12 @@ html:not(.js) .view--stage{ display:none; }
 
 /* Narrow screens: the longest name has to fit the gutter, not run past it. */
 @media (max-width:760px){
+  /* On a phone the index text owns the screen, so the cube stays small and
+     close to centre instead of sliding off the right edge. */
+  .cube{
+    --cs:clamp(190px,46vmin,300px);
+    transform:translateX(6vmin) rotateX(var(--rx)) rotateY(var(--ry));
+  }
   .stage__body{ padding-inline:14px; }
   .index{ gap:clamp(4px,1.2vh,14px); }
   .index__row a{ font-size:clamp(26px,8.3vw,60px); }
