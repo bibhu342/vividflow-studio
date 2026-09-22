@@ -44,7 +44,16 @@
       if (p.faces.length) {
         // Cycle the available frames so all six faces are filled.
         var src = p.faces[i % p.faces.length].trim();
-        html += '<div class="' + cls + '"><img src="' + src + '" alt="" loading="lazy" decoding="async"></div>';
+        if (/\.(mp4|webm)$/i.test(src)) {
+          // A project with a film shows the film itself — muted and looping,
+          // so it plays inline on phones without asking for sound.
+          var webm = src.replace(/\.mp4$/i, '.webm');
+          html += '<div class="' + cls + '"><video autoplay muted loop playsinline preload="metadata">' +
+                  '<source src="' + webm + '" type="video/webm">' +
+                  '<source src="' + src + '" type="video/mp4"></video></div>';
+        } else {
+          html += '<div class="' + cls + '"><img src="' + src + '" alt="" loading="lazy" decoding="async"></div>';
+        }
       } else {
         // No imagery yet — say so rather than mock something up.
         html += '<div class="' + cls + ' cube__face--type"><span>' + p.name + '</span></div>';
