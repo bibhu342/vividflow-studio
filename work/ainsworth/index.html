@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ainsworth Clinic — Nurse-led aesthetics, Manchester</title>
+<meta name="description" content="Nurse-led aesthetic clinic in Manchester city centre. Every treatment starts with a free clinical consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{
+  --paper:oklch(98% .008 70);
+  --paper-2:oklch(95.5% .01 70);
+  --white:oklch(99.5% .003 70);
+  --ink:oklch(24% .012 70);
+  --body:oklch(38% .01 70);
+  --muted:oklch(50% .01 70);
+  --line:oklch(89% .008 70);
+  --sage:oklch(44% .07 165);
+  --sage-dk:oklch(36% .07 165);
+  --sage-tint:oklch(94.5% .02 165);
+  --blush:oklch(94% .025 30);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Work Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--sage);text-decoration:none}
+a:hover{color:var(--sage-dk)}
+::selection{background:var(--sage-tint)}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;margin:0;letter-spacing:-.01em}
+.kick{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin:0 0 16px}
+.basis{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--muted);margin:12px 0 0}
+
+/* ---------- CTA ---------- */
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--sage);color:#fff;font-family:var(--sans);font-weight:500;font-size:15px;padding:15px 26px;border-radius:2px;border:0;cursor:pointer;transition:background .15s}
+.cta:hover{background:var(--sage-dk);color:#fff}
+.cta:focus-visible,.link:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+.link{font-weight:500;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px}
+.link:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ---------- header ---------- */
+.logo-bar{background:var(--paper)}
+.logo-bar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:12px}
+.logo{font-family:var(--serif);font-size:25px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+.logo:hover{color:var(--ink)}
+.logo small{display:block;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:-2px}
+.tel{font-size:14px;font-weight:500;color:var(--ink)}
+.nav{position:sticky;top:0;z-index:20;background:oklch(98% .008 70 / .94);backdrop-filter:blur(8px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:8px;padding-top:10px;padding-bottom:10px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px 16px;flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav li a{font-size:13.5px;font-weight:500;color:var(--body);white-space:nowrap;padding:4px 0;display:block}
+.nav li a:hover{color:var(--ink)}
+.nav .cta{display:none;padding:10px 18px;font-size:13.5px}
+
+/* ---------- hero ---------- */
+.hero{padding:44px 0 56px}
+.hero-grid{display:grid;gap:36px}
+.hero h1{font-size:clamp(40px,8.4vw,68px);line-height:1.02;margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero .lede{font-size:17.5px;max-width:34em;margin:0 0 30px}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
+.trust{list-style:none;margin:36px 0 0;padding:22px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.trust li{font-size:13.5px;font-weight:500;color:var(--ink);padding-left:18px;position:relative;line-height:1.4}
+.trust li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;border-radius:50%;background:var(--sage)}
+.hero-img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper-2)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img figcaption{position:absolute;left:0;bottom:0;background:var(--paper);padding:12px 16px 0 0;font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+/* ---------- sections ---------- */
+section.block{padding:72px 0;border-top:1px solid var(--line)}
+.sec-head{max-width:40em;margin-bottom:40px}
+.sec-head h2{font-size:clamp(32px,5.4vw,46px);line-height:1.08;margin-bottom:12px}
+.sec-head p{margin:0;font-size:16.5px}
+
+/* treatments */
+.menu{border-top:1px solid var(--ink)}
+.treat{display:grid;grid-template-columns:1fr auto;gap:6px 20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.treat h3{font-size:25px;line-height:1.15}
+.treat p{grid-column:1/-1;margin:0;font-size:15px;max-width:40em}
+.price{font-family:var(--mono);font-size:14px;color:var(--ink);text-align:right;white-space:nowrap;padding-top:6px}
+.price small{display:block;font-size:10.5px;color:var(--muted)}
+.treat .ask{grid-column:1/-1;justify-self:start;background:none;border:0;padding:4px 0 0;font:500 13.5px var(--sans);color:var(--sage);cursor:pointer}
+.treat .ask:hover{color:var(--sage-dk)}
+.treat.assess .price{color:var(--muted)}
+
+/* practitioner */
+.prac{display:grid;gap:36px}
+.prac h2{font-size:clamp(34px,5.6vw,48px);line-height:1.05;margin-bottom:6px}
+.prac .role{font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:0 0 22px}
+.prac blockquote{margin:0 0 26px;font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.3;color:var(--ink);padding-left:20px;border-left:2px solid var(--sage)}
+.creds{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.creds li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.creds li span:first-child{color:var(--ink);font-weight:500}
+.creds li span:last-child{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right}
+.figure{font-family:var(--serif);font-size:88px;line-height:.9;color:var(--ink);font-weight:500}
+.figure-cap{font-size:15px;margin:10px 0 0;max-width:22em}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.steps li{background:var(--white);padding:26px 22px}
+.steps .n{font-family:var(--mono);font-size:12px;color:var(--sage)}
+.steps h3{font-size:24px;margin:8px 0 8px}
+.steps p{margin:0;font-size:15px}
+.honest{margin-top:40px;background:var(--blush);padding:28px 24px;display:grid;gap:12px}
+.honest h3{font-size:26px}
+.honest p{margin:0;font-size:15.5px;color:var(--ink);max-width:48em}
+
+/* pay */
+.pay{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.pay div{background:var(--white);padding:26px 22px}
+.pay h3{font-size:25px;margin-bottom:8px}
+.pay p{margin:0 0 12px;font-size:15px}
+.pay .note{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:0}
+
+/* faq */
+.faq{border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 40px 20px 0;position:relative;font-family:var(--serif);font-size:23px;font-weight:500;color:var(--ink);line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:18px;font-family:var(--sans);font-weight:400;font-size:24px;color:var(--sage);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 22px;font-size:15.5px;max-width:44em}
+
+/* form */
+.book{background:var(--sage-tint);border-top:0}
+.book-grid{display:grid;gap:36px}
+.book h2{font-size:clamp(34px,5.6vw,48px);line-height:1.05;margin-bottom:14px}
+.book .lede{font-size:16.5px;margin:0 0 20px}
+form{background:var(--white);padding:26px 22px;display:grid;gap:18px;border:1px solid var(--line)}
+.row2{display:grid;gap:18px}
+label{display:block;font-size:13px;font-weight:500;color:var(--ink);margin-bottom:6px}
+input[type=text],input[type=tel],input[type=email],select{width:100%;font:15px var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:12px 13px}
+input::placeholder{color:var(--muted)}
+fieldset{border:0;padding:0;margin:0}
+legend{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px;padding:0}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg label{margin:0}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:inline-block;font-size:14px;font-weight:500;padding:9px 15px;border:1px solid var(--line);border-radius:2px;background:var(--paper);cursor:pointer;color:var(--body)}
+.seg input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.seg input:focus-visible+span{outline:2px solid var(--sage);outline-offset:2px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;font-weight:400;color:var(--body);line-height:1.5}
+.consent input{margin-top:3px;accent-color:var(--sage);width:16px;height:16px;flex:none}
+form .cta{width:100%}
+.formnote{font-family:var(--mono);font-size:11px;color:var(--muted);margin:0;text-align:center}
+.thanks{display:none;background:var(--white);padding:36px 24px;border:1px solid var(--line)}
+.thanks h3{font-size:32px;margin-bottom:10px}
+.thanks p{margin:0;font-size:15.5px}
+.done form{display:none}
+.done .thanks{display:block}
+
+/* footer */
+footer{background:var(--ink);color:oklch(80% .008 70);padding:56px 0 40px;font-size:14px}
+footer .cols{display:grid;gap:28px;margin-bottom:36px}
+footer h4{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:oklch(68% .01 70);margin:0 0 10px}
+footer p{margin:0}
+footer a{color:#fff}
+footer .flogo{font-family:var(--serif);font-size:26px;font-weight:600;color:#fff;margin-bottom:6px}
+.fine{border-top:1px solid oklch(34% .012 70);padding-top:22px;font-size:12.5px;line-height:1.7;color:oklch(68% .01 70);display:grid;gap:10px}
+.fine a{color:oklch(80% .008 70);text-decoration:underline}
+
+/* mobile sticky book bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px}
+.mbar .cta{flex:1;padding:13px 16px}
+.mbar .call{display:flex;align-items:center;justify-content:center;padding:0 16px;border:1px solid var(--line);color:var(--ink);font-weight:500;font-size:14px;border-radius:2px}
+body{padding-bottom:72px}
+
+/* ---------- ≥ 760 ---------- */
+@media (min-width:760px){
+  .wrap{padding:0 36px}
+  .trust{grid-template-columns:repeat(4,1fr)}
+  .treat{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) auto;align-items:baseline;padding:26px 0}
+  .treat p{grid-column:auto}
+  .treat .ask{grid-column:2}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .pay{grid-template-columns:repeat(3,1fr)}
+  .row2{grid-template-columns:1fr 1fr}
+  footer .cols{grid-template-columns:1.3fr 1fr 1fr}
+  form{padding:34px 32px}
+}
+/* ---------- ≥ 1000 ---------- */
+@media (min-width:1000px){
+  html{scroll-padding-top:70px}
+  .nav .cta{display:inline-flex}
+  .hero{padding:64px 0 88px}
+  .hero-grid{grid-template-columns:1.15fr .85fr;align-items:end;gap:64px}
+  .prac{grid-template-columns:1.2fr .8fr;gap:80px;align-items:start}
+  .steps{grid-template-columns:repeat(4,1fr)}
+  .book-grid{grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
+  section.block{padding:104px 0}
+  .mbar{display:none}
+  body{padding-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="logo-bar" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Ainsworth Clinic — back to top">Ainsworth&nbsp;Clinic<small>Manchester</small></a>
+    <a class="tel" href="tel:+441614960000">0161 496 0000</a>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <ul>
+      <li><a href="#treatments">Treatments</a></li>
+      <li><a href="#practitioner">Practitioner</a></li>
+      <li><a href="#process">How it works</a></li>
+      <li><a href="#pay">Ways to pay</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="cta" href="#book">Book free consultation</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kick">Manchester city centre · Nurse-led clinic</p>
+      <h1>Aesthetic treatment, <em>assessed</em> before it's agreed.</h1>
+      <p class="lede">Skin, contour and laser treatments delivered by an NMC registered nurse prescriber. Every enquiry starts with a free clinical consultation — not a price list, not a sales call.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#book">Book free consultation</a>
+        <a class="link" href="tel:+441614960000">Or call 0161 496 0000</a>
+      </div>
+      <ul class="trust">
+        <li>NMC registered nurse prescriber</li>
+        <li>10+ years clinical experience</li>
+        <li>Fully insured premises</li>
+        <li>Free, no-obligation consultation</li>
+      </ul>
+    </div>
+    <figure class="hero-img" style="margin:0">
+      <img src="https://images.unsplash.com/photo-1786937680099-779e1da6f7f7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&w=900&h=1125" alt="Bright clinic hallway with skincare products on wooden shelves" width="900" height="1125">
+      <figcaption>14 King Street, M2</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="treatments">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kick">Treatment menu</p>
+      <h2>Prices on the page, confirmed at consultation.</h2>
+      <p>What you see here is where each treatment starts. Your practitioner confirms the plan and the final cost before anything is booked.</p>
+    </div>
+    <div class="menu" id="menu"></div>
+    <p class="basis">"From" = one session, smallest standard area or volume, at 2026 clinic rates. Multi-area plans and follow-ups are quoted in writing at consultation. Lines &amp; wrinkles treatment is prescription-only and is discussed only after a face-to-face assessment, so it is not priced here.</p>
+  </div>
+</section>
+
+<section class="block" id="practitioner">
+  <div class="wrap prac">
+    <div>
+      <p class="kick">Your practitioner</p>
+      <h2>Sarah Ainsworth, RN</h2>
+      <p class="role">Registered nurse prescriber</p>
+      <blockquote>"If I don't think a treatment is right for you, I'll say so at the consultation — and it costs you nothing to hear it."</blockquote>
+      <p style="margin:0;font-size:16.5px;max-width:34em">A decade in NHS dermatology before private aesthetic practice. Sarah assesses, plans and performs every treatment at the clinic herself. There are no walk-in injectables and no treatment on the day of a first consultation.</p>
+    </div>
+    <div>
+      <div class="figure">4,000+</div>
+      <p class="figure-cap">treatments performed since qualifying as a prescriber.</p>
+      <p class="basis">Count taken from Sarah's clinical treatment log, 2016–2026, NHS and private. Concept figure for this portfolio page.</p>
+      <ul class="creds" style="margin-top:28px">
+        <li><span>NMC registration</span><span>Nurse prescriber</span></li>
+        <li><span>Aesthetics qualification</span><span>Level 7</span></li>
+        <li><span>Professional body</span><span>Member, BACN</span></li>
+        <li><span>Insurance</span><span>Medical malpractice, in force</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kick">How it works</p>
+      <h2>Four steps. Nothing happens on the first visit.</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="n">01</span><h3>Consultation</h3><p>Thirty minutes with Sarah. Medical history, what you'd like to change, and an honest view on whether treatment will get you there.</p></li>
+      <li><span class="n">02</span><h3>Written plan</h3><p>Options, expected results, risks and the full cost, in writing. Then at least 48 hours to think it over.</p></li>
+      <li><span class="n">03</span><h3>Treatment</h3><p>Performed by Sarah, in a clinical room, with aftercare written down before you leave.</p></li>
+      <li><span class="n">04</span><h3>Two-week review</h3><p>A follow-up is included in every plan. If something isn't as agreed, this is where it's put right.</p></li>
+    </ol>
+    <div class="honest">
+      <h3>Why there are no before-and-after photos here.</h3>
+      <p>Results depend on your anatomy, the product used and your aftercare — a photo of someone else's face tells you very little about yours. Where patients have given written consent, Sarah will show relevant cases at your consultation, alongside what could go wrong.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pay">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kick">Ways to pay</p>
+      <h2>Pay in full, or spread it.</h2>
+    </div>
+    <div class="pay">
+      <div><h3>Pay in full</h3><p>Standard pricing, settled at your appointment.</p><p class="note">No fees. No minimum spend.</p></div>
+      <div><h3>Pay monthly</h3><p>Spread a treatment plan over fixed monthly payments.</p><p class="note">Subject to status. Full terms and costs given in writing before you agree.</p></div>
+      <div><h3>Pay in three</h3><p>Three equal payments for eligible treatments.</p><p class="note">Subject to eligibility. Terms set out at consultation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kick">Questions people ask before booking</p>
+      <h2>The honest answers.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Who actually performs the treatment?</summary><p>Sarah does — every time. She is an NMC registered nurse prescriber, and she assesses, plans and treats. Treatment is never handed to an unregistered practitioner.</p></details>
+      <details><summary>Does it hurt?</summary><p>Most people describe a pinch or a brief sting. Topical anaesthetic is used where it helps, and many fillers contain a local anaesthetic. Sarah will tell you what to expect for your specific treatment at consultation.</p></details>
+      <details><summary>How much downtime should I plan for?</summary><p>For most skin and injectable treatments, mild redness, swelling or bruising for a few days. Peels and microneedling can mean a week of visible recovery. Your written plan states the expected downtime before you agree to anything.</p></details>
+      <details><summary>What if I don't like the result?</summary><p>That is what the two-week review is for. Hyaluronic acid filler can be adjusted or dissolved. Sarah plans conservatively — it is far easier to add at review than to take away.</p></details>
+      <details><summary>Is the consultation really free?</summary><p>Yes. It is thirty minutes, there is no charge and no obligation, and you won't be treated on the same day.</p></details>
+      <details><summary>Can anyone be treated?</summary><p>No. Treatment is only for over-18s, and is not offered during pregnancy or breastfeeding, or with certain medical conditions and medications. That is part of what the consultation checks.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="block book" id="book">
+  <div class="wrap book-grid">
+    <div>
+      <p class="kick">The only way to book</p>
+      <h2>Request your free consultation.</h2>
+      <p class="lede">This reserves a clinical assessment, not a treatment slot. Sarah's team reviews every request and calls you within one working day.</p>
+      <p style="margin:0;font-size:15px">Prefer to talk? <a class="link" href="tel:+441614960000">0161 496 0000</a></p>
+    </div>
+    <div id="formwrap">
+      <form id="consult" novalidate>
+        <div class="row2">
+          <div><label for="f-name">Full name</label><input type="text" id="f-name" autocomplete="name" required></div>
+          <div><label for="f-tel">Phone</label><input type="tel" id="f-tel" autocomplete="tel" required></div>
+        </div>
+        <div><label for="f-mail">Email</label><input type="email" id="f-mail" autocomplete="email" required></div>
+        <div><label for="f-treat">Treatment of interest</label><select id="f-treat"></select></div>
+        <fieldset>
+          <legend>Best time to call</legend>
+          <div class="seg">
+            <label><input type="radio" name="time" value="morning" checked><span>Morning</span></label>
+            <label><input type="radio" name="time" value="afternoon"><span>Afternoon</span></label>
+            <label><input type="radio" name="time" value="evening"><span>Evening</span></label>
+          </div>
+        </fieldset>
+        <label class="consent"><input type="checkbox" id="f-ok" required> I confirm I am 18 or over and agree to be contacted about this enquiry.</label>
+        <button class="cta" type="submit">Request my free consultation</button>
+        <p class="formnote">Concept page — this form sends nothing and stores nothing.</p>
+      </form>
+      <div class="thanks" role="status" aria-live="polite">
+        <h3>Thank you — request received.</h3>
+        <p>Sarah's team will call you within one working day to arrange your consultation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><div class="flogo">Ainsworth Clinic</div><p>14 King Street, Manchester M2 6AG<br><a href="tel:+441614960000">0161 496 0000</a></p></div>
+      <div><h4>Hours</h4><p>Tue–Fri 10am–7pm<br>Sat 9am–4pm · Closed Sun–Mon</p></div>
+      <div><h4>Registration</h4><p>NMC registered nurse prescriber<br>Member, BACN</p></div>
+    </div>
+    <div class="fine">
+      <p>Some treatments involve prescription-only medicines or medical devices and are only offered after an individual, face-to-face clinical assessment by a regulated healthcare professional. Not suitable for anyone under 18, pregnant or breastfeeding. Results and suitability vary by individual.</p>
+      <p>Ainsworth Clinic is a concept brand designed and built by VividFlow Studio as a portfolio piece. It is not a real clinic, and the names, numbers and address are illustrative. Photo: <a href="https://unsplash.com/@graceannefully" rel="noopener">Grace Anne Bobadilla</a> on Unsplash.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="call" href="tel:+441614960000" aria-label="Call the clinic">Call</a>
+  <a class="cta" href="#book">Book free consultation</a>
+</div>
+
+<script>
+(function(){
+  var T = [
+    {id:'lines',   name:'Lines & wrinkles',   desc:'Softening expression lines on the forehead and around the eyes. Prescription-only — options are discussed only after assessment.', price:null},
+    {id:'filler',  name:'Dermal filler',      desc:'Lip, cheek and jawline definition with hyaluronic acid filler, which can be dissolved if needed.', price:'£250', unit:'0.5 ml, lips'},
+    {id:'boost',   name:'Skin boosters',      desc:'Injectable hydration for skin that looks dull, dry or crepey.', price:'£150', unit:'1 session'},
+    {id:'peel',    name:'Chemical peels',     desc:'Medical-grade peels for tone, texture and congestion.', price:'£90', unit:'1 session'},
+    {id:'needle',  name:'Microneedling',      desc:'Collagen induction for acne scarring, texture and fine lines.', price:'£120', unit:'full face'},
+    {id:'laser',   name:'Laser hair removal', desc:'Long-term hair reduction, patch-tested first, suitable for all skin types.', price:'£45', unit:'per small area'}
+  ];
+  var menu = document.getElementById('menu'), sel = document.getElementById('f-treat');
+  var esc = function(s){return s.replace(/&/g,'&amp;');};
+  menu.innerHTML = T.map(function(t){
+    var p = t.price
+      ? '<div class="price">from '+t.price+'<small>'+t.unit+'</small></div>'
+      : '<div class="price">By assessment<small>not priced online</small></div>';
+    return '<div class="treat'+(t.price?'':' assess')+'"><h3>'+esc(t.name)+'</h3><p>'+t.desc+'</p>'+p+
+      '<button class="ask" type="button" data-id="'+t.id+'">Ask about this at consultation →</button></div>';
+  }).join('');
+  sel.innerHTML = '<option value="">Not sure yet</option>' + T.map(function(t){return '<option value="'+t.id+'">'+esc(t.name)+'</option>';}).join('');
+  menu.addEventListener('click', function(e){
+    var b = e.target.closest('.ask'); if(!b) return;
+    sel.value = b.getAttribute('data-id');
+    document.getElementById('book').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    setTimeout(function(){ document.getElementById('f-name').focus({preventScroll:true}); }, 500);
+  });
+  document.getElementById('consult').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!this.checkValidity()){ this.reportValidity(); return; }
+    document.getElementById('formwrap').classList.add('done');
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bracket — Field Service App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --blue-600:#254CA4; --blue-700:#193885; --blue-50:#EEF2FC;
+  --ink-900:#14161B; --ink-700:#4A515D; --ink-500:#7A828F; --ink-300:#BABFC7; --ink-100:#E7EAEE; --ink-50:#F6F7F9;
+  --white:#FFFFFF;
+  --green-600:#168444; --green-50:#E6F6E9;
+  --amber-600:#C77106; --amber-50:#FEF3DB;
+  --red-600:#BD2E27; --red-50:#FDE8E6;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink-50);color:var(--ink-900);font-family:var(--sans);line-height:1.5}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+
+header{padding:72px 24px 56px;background:var(--white);border-bottom:1px solid var(--ink-100)}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-600);margin:0 0 18px;text-align:center}
+h1{font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.02em;margin:0 auto 16px;text-align:center;max-width:16ch;line-height:1.05}
+.lede{font-size:17px;color:var(--ink-500);text-align:center;max-width:52ch;margin:0 auto;line-height:1.6}
+.meta-row{display:flex;justify-content:center;gap:28px;margin-top:32px;flex-wrap:wrap}
+.meta-row div{text-align:center}
+.meta-row .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-500)}
+.meta-row .v{font-size:14px;font-weight:600;margin-top:4px}
+
+section{padding:64px 24px}
+.section-head{max-width:640px;margin:0 auto 40px;text-align:center}
+.section-head .tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-600);margin:0 0 10px}
+.section-head h2{font-size:26px;font-weight:700;letter-spacing:-.01em;margin:0 0 10px}
+.section-head p{color:var(--ink-500);font-size:15px;margin:0}
+
+/* --- component swatches --- */
+.swatches{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.swatch-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.swatch-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-500);width:110px;flex:none}
+.pill{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.pill.complete{background:var(--green-50);color:var(--green-600)}
+.pill.progress{background:var(--amber-50);color:var(--amber-600)}
+.pill.overdue{background:var(--red-50);color:var(--red-600)}
+.pill.scheduled{background:var(--ink-50);color:var(--ink-500)}
+.btn{font-family:var(--sans);font-weight:600;font-size:14px;padding:12px 22px;border-radius:10px;border:1px solid transparent;cursor:default}
+.btn.primary{background:var(--blue-600);color:#fff}
+.btn.secondary{background:#fff;color:var(--blue-600);border-color:var(--ink-100)}
+.btn.disabled{background:var(--ink-100);color:var(--ink-500)}
+.chip-card{background:#fff;border:1px solid var(--ink-100);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:340px}
+.chip-card .t{font-size:13px;font-weight:600}
+.chip-card .s{font-size:11px;color:var(--ink-500);margin-top:2px}
+
+/* --- phone frames --- */
+.screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;max-width:1200px;margin:0 auto}
+.screen-block{display:flex;flex-direction:column;align-items:center;gap:16px}
+.screen-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-500);text-align:center}
+.screen-label b{color:var(--ink-900);font-weight:600}
+.phone{width:280px;height:606px;background:var(--ink-50);border-radius:32px;border:1px solid var(--ink-100);overflow:hidden;box-shadow:0 20px 50px -20px rgba(20,22,27,.25);display:flex;flex-direction:column;position:relative}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:90px;height:18px;background:var(--white);border-radius:0 0 14px 14px;z-index:5}
+.s-header{background:#fff;padding:26px 18px 16px;border-bottom:1px solid var(--ink-100)}
+.s-kick{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-500);margin:0 0 4px}
+.s-back{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-600);margin:0 0 6px}
+.s-title{font-size:19px;font-weight:700;letter-spacing:-.01em;margin:0}
+.s-body{flex:1;overflow:hidden;padding:12px;display:flex;flex-direction:column;gap:9px}
+.s-footer{background:#fff;border-top:1px solid var(--ink-100);padding:10px 14px 16px}
+.job-row{background:#fff;border:1px solid var(--ink-100);border-radius:12px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.job-row .jt{font-size:12.5px;font-weight:600;line-height:1.3}
+.job-row .js{font-size:10.5px;color:var(--ink-500);margin-top:3px}
+.pill.mini{font-size:8.5px;padding:3px 7px;flex:none}
+.card{background:#fff;border-radius:12px;padding:14px 15px}
+.card .l{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-500);margin:0 0 4px}
+.card .t{font-size:14px;font-weight:600;margin:0 0 3px}
+.card .b{font-size:11.5px;color:var(--ink-500);line-height:1.5}
+.btn.small{font-size:11.5px;padding:10px 0;width:100%;text-align:center;border-radius:8px}
+.map-box{background:var(--ink-100);border-radius:12px;flex:1;display:flex;align-items:flex-start;padding:10px}
+.sheet{background:#fff;border-radius:14px;padding:16px}
+.eta{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-500)}
+.eta-val{font-size:18px;font-weight:700;margin:3px 0 8px}
+.eta-addr{font-size:11px;color:var(--ink-500);margin-bottom:12px}
+.btn-row{display:flex;gap:8px}
+.btn-row .btn{flex:1}
+.checklist-item{background:#fff;border-radius:10px;padding:11px 12px;display:flex;align-items:center;gap:10px}
+.check{width:18px;height:18px;border-radius:5px;flex:none}
+.check.done{background:var(--green-600)}
+.check.todo{border:1.5px solid var(--ink-100)}
+.checklist-item .ct{font-size:12px;font-weight:500}
+.week-row{display:flex;gap:5px;margin-top:2px}
+.day{flex:1;text-align:center;padding:7px 2px;border-radius:8px}
+.day.active{background:var(--blue-600);color:#fff}
+.day .dl{font-family:var(--mono);font-size:8px;letter-spacing:.08em}
+.day .dn{font-size:12px;font-weight:700;margin-top:2px}
+.day:not(.active) .dl{color:var(--ink-500)}
+.sched-row{background:#fff;border:1px solid var(--ink-100);border-radius:10px;padding:10px 11px;display:flex;align-items:center;gap:10px}
+.sched-row .time{font-family:var(--mono);font-size:10px;color:var(--ink-500);width:52px;flex:none}
+.sched-row .title{font-size:11px;font-weight:600;flex:1;line-height:1.3}
+.profile-head{background:#fff;padding:28px 16px 20px;text-align:center;border-bottom:1px solid var(--ink-100)}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;margin:0 auto 10px}
+.profile-head .pn{font-size:16px;font-weight:700}
+.profile-head .pr{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--ink-500);margin-top:4px}
+.stat-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--ink-100)}
+.stat-cell{background:#fff;text-align:center;padding:12px 4px}
+.stat-cell .sv{font-size:16px;font-weight:700}
+.stat-cell .sl{font-family:var(--mono);font-size:7.5px;letter-spacing:.1em;color:var(--ink-500);margin-top:2px}
+.menu-row{background:#fff;border-bottom:1px solid var(--ink-100);padding:12px 14px;display:flex;justify-content:space-between;font-size:12px;font-weight:500}
+.menu-row span:last-child{color:var(--ink-500)}
+.tabbar{display:flex;justify-content:space-around;background:#fff;border-top:1px solid var(--ink-100);padding:9px 0 12px}
+.tab{font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-500)}
+.tab.active{color:var(--blue-600);font-weight:600}
+
+footer{padding:48px 24px 64px;text-align:center;border-top:1px solid var(--ink-100);background:#fff}
+footer p{color:var(--ink-500);font-size:13px;margin:0}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="kicker">VividFlow Studio · Concept, self-directed</p>
+  <h1>Bracket</h1>
+  <p class="lede">The app a field tech actually opens on site — not office scheduling software ported to a phone. Built for HVAC, plumbing and electrical crews.</p>
+  <div class="meta-row">
+    <div><div class="k">Platform</div><div class="v">iOS · mobile</div></div>
+    <div><div class="k">Niche</div><div class="v">Field service — HVAC / plumbing / electrical</div></div>
+    <div><div class="k">Screens</div><div class="v">6, from one component set</div></div>
+  </div>
+</header>
+
+<section>
+  <div class="section-head">
+    <p class="tag">Design system</p>
+    <h2>Tokens, then components</h2>
+    <p>One accent, semantic status colors, mono for every figure — the same discipline as every VividFlow build, applied to a job-status app.</p>
+  </div>
+  <div class="swatches">
+    <div class="swatch-row">
+      <span class="swatch-label">Status</span>
+      <span class="pill complete">Complete</span>
+      <span class="pill progress">In Progress</span>
+      <span class="pill overdue">Overdue</span>
+      <span class="pill scheduled">Scheduled</span>
+    </div>
+    <div class="swatch-row">
+      <span class="swatch-label">Buttons</span>
+      <span class="btn primary">Primary</span>
+      <span class="btn secondary">Secondary</span>
+      <span class="btn disabled">Disabled</span>
+    </div>
+    <div class="swatch-row">
+      <span class="swatch-label">List row</span>
+      <div class="chip-card">
+        <div><div class="t">142 Elm Street — Furnace no heat</div><div class="s">9:30 AM · Residential HVAC</div></div>
+        <span class="pill progress">In Progress</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;border-top:1px solid var(--ink-100);border-bottom:1px solid var(--ink-100)">
+  <div class="section-head">
+    <p class="tag">Six screens</p>
+    <h2>A day in the field, start to finish</h2>
+    <p>One job at a time on screen, big tap targets, minimal typing — checklists and photos over free text.</p>
+  </div>
+
+  <div class="screens">
+
+    <div class="screen-block">
+      <div class="screen-label"><b>01</b> · Today's Jobs</div>
+      <div class="phone"><div class="phone-notch"></div>
+        <div class="s-header"><p class="s-kick">Tuesday, Sep 22</p><h3 class="s-title">5 jobs today</h3></div>
+        <div class="s-body">
+          <div class="job-row"><div><div class="jt">142 Elm Street — Furnace no heat</div><div class="js">9:30 AM · Residential HVAC</div></div><span class="pill mini progress">Progress</span></div>
+          <div class="job-row"><div><div class="jt">88 Cattail Rd — AC tune-up</div><div class="js">11:00 AM · Residential HVAC</div></div><span class="pill mini scheduled">Scheduled</span></div>
+          <div class="job-row"><div><div class="jt">Ferro Bakery — Walk-in cooler</div><div class="js">1:15 PM · Commercial</div></div><span class="pill mini scheduled">Scheduled</span></div>
+          <div class="job-row"><div><div class="jt">19 Birchwood Ct — Water heater</div><div class="js">3:00 PM · Plumbing</div></div><span class="pill mini scheduled">Scheduled</span></div>
+          <div class="job-row"><div><div class="jt">204 Hatherton Ave — Panel upgrade</div><div class="js">Yesterday · Electrical</div></div><span class="pill mini complete">Complete</span></div>
+        </div>
+        <div class="tabbar"><span class="tab active">Jobs</span><span class="tab">Schedule</span><span class="tab">Map</span><span class="tab">Profile</span></div>
+      </div>
+    </div>
+
+    <div class="screen-block">
+      <div class="screen-label"><b>02</b> · Job Detail</div>
+      <div class="phone"><div class="phone-notch"></div>
+        <div class="s-header"><p class="s-back">← Today's Jobs</p><h3 class="s-title">142 Elm Street</h3>
+          <div style="margin-top:8px"><span class="pill progress">In Progress</span></div>
+        </div>
+        <div class="s-body">
+          <div class="card"><p class="l">Customer</p><p class="t">Diane Ferro</p><p class="b">142 Elm Street, Unit B · (317) 555-0148</p></div>
+          <div class="card"><p class="l">Equipment</p><p class="t">Carrier 58STA — 2019</p><p class="b">Last serviced 8 Mar 2026. Filter due.</p></div>
+          <div class="card"><p class="l">Notes from dispatch</p><p class="t">No heat, pilot won't stay lit</p><p class="b">Smells of gas near unit — advised to ventilate.</p></div>
+        </div>
+        <div class="s-footer"><button class="btn primary small">Navigate to job</button></div>
+      </div>
+    </div>
+
+    <div class="screen-block">
+      <div class="screen-label"><b>03</b> · Navigate</div>
+      <div class="phone"><div class="phone-notch"></div>
+        <div class="s-body" style="padding:0">
+          <div class="map-box"><span style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-500);padding:16px">MAP</span></div>
+          <div class="sheet">
+            <p class="eta">Arriving in</p>
+            <p class="eta-val">11 min · 3.2 mi</p>
+            <p class="eta-addr">142 Elm Street, Unit B, Hathersage</p>
+            <div class="btn-row"><span class="btn secondary" style="text-align:center">Call</span><span class="btn primary" style="text-align:center">I've arrived</span></div>
+          </div>
+        </div>
+        <div class="tabbar"><span class="tab">Jobs</span><span class="tab">Schedule</span><span class="tab active">Map</span><span class="tab">Profile</span></div>
+      </div>
+    </div>
+
+    <div class="screen-block">
+      <div class="screen-label"><b>04</b> · Checklist &amp; Complete</div>
+      <div class="phone"><div class="phone-notch"></div>
+        <div class="s-header"><p class="s-back">← 142 Elm Street</p><h3 class="s-title">Complete the job</h3></div>
+        <div class="s-body">
+          <div class="checklist-item"><span class="check done"></span><span class="ct">Diagnosed the fault</span></div>
+          <div class="checklist-item"><span class="check done"></span><span class="ct">Replaced thermocouple</span></div>
+          <div class="checklist-item"><span class="check done"></span><span class="ct">Tested pilot light, holds flame</span></div>
+          <div class="checklist-item"><span class="check todo"></span><span class="ct">Photo of completed repair</span></div>
+          <div class="checklist-item"><span class="check todo"></span><span class="ct">Customer signature</span></div>
+        </div>
+        <div class="s-footer"><button class="btn primary small">Mark job complete</button></div>
+      </div>
+    </div>
+
+    <div class="screen-block">
+      <div class="screen-label"><b>05</b> · Schedule</div>
+      <div class="phone"><div class="phone-notch"></div>
+        <div class="s-header"><p class="s-kick">Schedule</p><h3 class="s-title">This week</h3>
+          <div class="week-row">
+            <div class="day"><div class="dl">MON</div><div class="dn">3</div></div>
+            <div class="day active"><div class="dl">TUE</div><div class="dn">5</div></div>
+            <div class="day"><div class="dl">WED</div><div class="dn">4</div></div>
+            <div class="day"><div class="dl">THU</div><div class="dn">2</div></div>
+            <div class="day"><div class="dl">FRI</div><div class="dn">6</div></div>
+          </div>
+        </div>
+        <div class="s-body">
+          <div class="sched-row"><span class="time">9:30 AM</span><span class="title">142 Elm St — Furnace</span><span class="pill mini progress">Prog</span></div>
+          <div class="sched-row"><span class="time">11:00 AM</span><span class="title">88 Cattail Rd — AC</span><span class="pill mini scheduled">Sched</span></div>
+          <div class="sched-row"><span class="time">1:15 PM</span><span class="title">Ferro Bakery — Cooler</span><span class="pill mini scheduled">Sched</span></div>
+          <div class="sched-row"><span class="time">3:00 PM</span><span class="title">19 Birchwood — Heater</span><span class="pill mini scheduled">Sched</span></div>
+          <div class="sched-row"><span class="time">4:30 PM</span><span class="title">204 Hatherton — Panel</span><span class="pill mini complete">Done</span></div>
+        </div>
+        <div class="tabbar"><span class="tab">Jobs</span><span class="tab active">Schedule</span><span class="tab">Map</span><span class="tab">Profile</span></div>
+      </div>
+    </div>
+
+    <div class="screen-block">
+      <div class="screen-label"><b>06</b> · Profile</div>
+      <div class="phone"><div class="phone-notch"></div>
+        <div class="profile-head">
+          <div class="avatar">RP</div>
+          <div class="pn">Robert Peace</div>
+          <div class="pr">HVAC · PLUMBING · ELECTRICAL</div>
+        </div>
+        <div class="stat-strip">
+          <div class="stat-cell"><div class="sv">4</div><div class="sl">JOBS DONE</div></div>
+          <div class="stat-cell"><div class="sv">6.5h</div><div class="sl">ON SITE</div></div>
+          <div class="stat-cell"><div class="sv">4.9</div><div class="sl">RATING</div></div>
+        </div>
+        <div style="flex:1;overflow:hidden">
+          <div class="menu-row"><span>Today's summary</span><span>›</span></div>
+          <div class="menu-row"><span>Earnings</span><span>›</span></div>
+          <div class="menu-row"><span>Vehicle &amp; tools</span><span>›</span></div>
+          <div class="menu-row"><span>Certifications</span><span>›</span></div>
+          <div class="menu-row"><span>Settings</span><span>›</span></div>
+        </div>
+        <div class="tabbar"><span class="tab">Jobs</span><span class="tab">Schedule</span><span class="tab">Map</span><span class="tab active">Profile</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>Bracket is a concept, self-directed portfolio piece by VividFlow Studio — not built for a named client.</p>
+</footer>
+
+</body>
+</html>
